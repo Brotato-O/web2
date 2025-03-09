@@ -71,7 +71,8 @@ body{
 }
 
 
-.sign a{
+.sign a,
+.cart a{
     text-decoration: none;
     color: #333;
     color: #af4c4c;
