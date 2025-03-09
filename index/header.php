@@ -9,7 +9,7 @@
         </div>
         <div id="CartnSign">
             <div class="cart">
-                <a><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="../cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
             <div class="slash"></div>
             <div class="sign">

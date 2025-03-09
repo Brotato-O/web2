@@ -60,7 +60,7 @@
                     </div>
             </div>
         </div>
-        <div class="footer2" style="margin:0 80px;">
+        <div class="footer2" style="margin:0 160px;">
             <div class="logo1">
                 <div style="height:20px;font-size:20px;margin-top:20px;"><b>Công ty TNHH quần áo giá rẻ SGU</b></div>
                 <div style="display: flex;height: 200px;margin-top: 20px;">
