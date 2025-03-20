@@ -1,6 +1,6 @@
 <section id="menu">
         <ul class="menu-bar">
-            <li>DANH MỤC SẢN PHẨM
+            <li><i class="fa-solid fa-bars"></i><p>DANH MỤC SẢN PHẨM</p>
                 <ul class="category-menu">
                     <li>Áo</li>
                     <li>Quần</li>

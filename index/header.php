@@ -9,11 +9,11 @@
         </div>
         <div id="CartnSign">
             <div class="cart">
-                <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="cart.php"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
             </div>
             <div class="slash"></div>
             <div class="sign">
-                <a href="login.html"><i class="fa-solid fa-user"></i></a>
+                <a href="./login/login.php"><i class="fa-solid fa-user"></i> Đăng nhập</a>
             </div>
         </div>
     </section>

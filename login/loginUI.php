@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="login.css">
-</head>
-<body>
-    <section id="loginForm">
+<div id="Main-SignForm">
+<section id="loginForm">
         <div class="left" id="left">
-            <h1>LOGIN</h1>
+            <h1>ĐĂNG NHẬP</h1>
             <div class="input-login">
                 <input class="input" required type="text" id="username">
                 <label class="label" for="username">Username</label>
@@ -24,17 +16,11 @@
             <a id="register-link">Đăng ký</a>
             </div>
         </div>
-        <div class="right" id="right">
-            <img src="trend-anh-chang-thu-gian-17326430354851130862195.webp" alt="">
-        </div>
     </section>
     
     <section id="registerForm">
-        <div class="left-regis" id="left">
-            <img src="trend-anh-chang-thu-gian-17326430354851130862195.webp" alt="">
-        </div>
-        <div class="right-legis" id="right">
-            <h1>Register</h1>
+        <div class="right" id="right">
+            <h1>ĐĂNG KÝ</h1>
             <div class="input-login">
                 <input class="input" required type="text" id="username">
                 <label class="label" for="username">Username</label>
@@ -53,8 +39,6 @@
             <p>Đã có tài khoản?</p>
             <a id="login-link">Đăng nhập</a>
             </div>
-        </div>
-    </section>
-</body>
-    <script src="login.js"></script>
-</html>
+    </div>
+</section>
+</div>
