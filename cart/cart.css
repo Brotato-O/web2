@@ -70,9 +70,8 @@ h2{
     justify-content: space-between;
     margin-left: -25px;
 }
-.select-address select{
+.select-address div{
     width: 33.333%;
-    padding-left: 25px;
     margin-left: 25px;
 }
 .method label{
@@ -167,4 +166,8 @@ h2{
     background-color: #f5f5f5;
     border-radius: 5px;
     margin-bottom: 25px;
+}
+.error{
+    display: block;
+    color: red;
 }
