@@ -1,0 +1,79 @@
+.dropdown-menu {
+  border: none;
+}
+
+.nav-item:hover > a {
+  background-color: darkorange;
+}
+
+#header_right .nav-link:hover {
+  background-color: transparent !important;
+}
+
+/* #sidebar {
+  background-color: #af4c4c !important;
+} */
+
+.row > * {
+  padding-right: 0px;
+  padding-left: 0px;
+  padding-top: 0px;
+}
+.nav-link {
+  padding-left: 10px;
+}
+
+.fa-solid {
+  width: 30px;
+}
+.dropdown-toggle::after {
+  display: none !important; /* Ẩn dấu mũi tên mặc định */
+}
+.dropdown-item:hover {
+  color: azure;
+  background: none;
+}
+#header_left {
+  height: 60px;
+}
+.card {
+  border-radius: 0;
+}
+#btn_chart_year.active,
+#btn_chart_month.active {
+  background-color: #007bff !important; /* Màu xanh khi active */
+  color: white !important;
+}
+.breadcrumb-item > a {
+  color: gray;
+  text-decoration: none;
+}
+
+.switch-toggle {
+  width: 50px;
+  height: 30px;
+  appearance: none;
+  background-color: #ffffff;
+  border-radius: 26px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: inset 0px 0px 16px rgba(0, 0, 0, 0.3);
+}
+.switch-toggle::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  background-color: #dfd2e7;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.3);
+  transition: 0.5s cubic-bezier(0.25, -0.59, 0.82, 1.66);
+}
+.switch-toggle:checked {
+  background-color: #926f6f;
+}
+.switch-toggle:checked::before {
+  left: 23px;
+}
