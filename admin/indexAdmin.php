@@ -18,13 +18,17 @@
             </div>
             <div class="col-10 bg-danger">
                 <?php include "includes/headerAdmin.php"; ?>
-                <div id="middle-content" class="container"></div>
+                <div id="header-bottom"></div>
+                <div id="middle-content" class="container">
+                    <?php include "pages/dashboard.php" ?>
+                </div>
                 <?php include "includes/footerAdmin.php" ?>
 
             </div>
         </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="assets/jsAdmin.js"></script>
 
 </body>
