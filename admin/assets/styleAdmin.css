@@ -77,3 +77,6 @@
 .switch-toggle:checked::before {
   left: 23px;
 }
+.small-header {
+  font-size: 0.9rem !important;
+}
