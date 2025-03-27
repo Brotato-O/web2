@@ -13,7 +13,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 bg-warning min-vh-100 flex-column" id="sidebar">
+            <div class="col-2 --bs-danger-border-subtle min-vh-100 flex-column" id="sidebar">
                 <?php include "includes/sidebarAdmin.php"; ?>
             </div>
             <div class="col-10 bg-danger">
