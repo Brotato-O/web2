@@ -1,7 +1,6 @@
 function validateInput(selector, errorSelector, errorMessage, condition) {
     var input = $(selector);
     var error = $(errorSelector);
-
     if (condition(input.val())) {
         error.html(errorMessage);
         return false;
@@ -46,7 +45,7 @@ $(document).ready(function(){
                 address: $(".address").val(),
             },
             success: function(response) {
-                console.log("Dữ liệu đã gửi:", response);
+                alert("Đã đặt hàng thành công!");
             },
             error: function(xhr, status, error) {
                 console.error("Lỗi AJAX:", status, error);

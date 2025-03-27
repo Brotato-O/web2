@@ -26,5 +26,5 @@
         VALUES ('$fullName', '$phoneNumber', '$email', '$province', '$district', '$ward', '$address')";
 
     $query3= "Delete from customer where id=1";
-    mysqli_query($conn, $query3);
+    mysqli_query($conn, $query2);
 ?>
