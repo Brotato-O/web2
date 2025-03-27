@@ -5,6 +5,7 @@ $(document).ready(function(){
         success: function(response){
             console.log("Dữ liệu đã nhận:", response);
             content="";
+            sum=0;
             for (var i=0; i< response.name.length; i++){
                 content+=`
                     <div class="cart-row">
@@ -16,8 +17,10 @@ $(document).ready(function(){
                         <div>${response.img[i]}</div>
                         <div><button class="delete" type="button">Xóa</button></div>
                     </div>`
+                    sum+=parseInt(response.total[i]);
                 
             }
+            $(".total-items").html(sum);
             $(".cart-items").html(content);
             console.log($(".cart-items").html(content));
         }
