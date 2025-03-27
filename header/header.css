@@ -1,0 +1,158 @@
+#header{
+    background-color: #f1f1f1;
+    color: #333;
+    text-align: center;
+    height: 60px;
+    align-items: center;
+    padding: 0 200px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.logoHeader p{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+#searchBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+
+#searchBar input{
+    width: 500px;
+    height: 35px;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+#searchBar button{
+    background-color: #af4c4c;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    right: 20px;
+    position: absolute;
+    border-radius: 22px;
+}
+
+#searchBar button:hover{
+    cursor: pointer;
+}
+
+#CartnSign{
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+}
+
+.cart,
+.sign{
+    font-size: 16px;
+    color: #af4c4c;
+}
+
+.slash{
+    border: 1px solid #333;
+    border-color: #af4c4c;
+}
+
+
+.sign a,
+.cart a{
+    text-decoration: none;
+    color: #333;
+    color: #af4c4c;
+}
+
+.cart:hover,
+.sign:hover{
+    cursor: pointer;
+    scale: 1.1;
+}
+
+#menu{
+    position: sticky;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background-color: #af4c4c;
+    color: white;
+    height: 50px;
+    padding: 0 200px;
+    z-index: 10;
+}
+
+.menu-bar{
+    display: flex;
+    gap: 60px;
+    z-index: 12;
+}
+
+.menu-bar li{
+    padding: 0 10px;
+    text-decoration: none;
+    list-style: none;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+}
+
+.menu-bar li i{
+    font-size: 18px;
+}
+
+.menu-bar li p{
+    margin-left: 10px;
+}
+
+.menu-bar li:hover{
+    cursor: pointer;
+}
+
+.menu-bar li:nth-child(1):hover .category-menu{
+    display: block;
+}
+
+.menu-bar li:nth-child(3):hover .category-menu2{
+    display: block;
+}
+
+.category-menu,
+.category-menu2{
+    display: none;
+    position: absolute;
+    align-items: center;
+    background-color: #f1f1f1;
+    margin-left: 20px;
+    margin-top: 20px;
+    height: auto;
+    width: 150px;
+    border-bottom: #333;
+    z-index: 13;
+}
+
+.category-menu2{
+    margin-left: -10px;
+}
+
+.category-menu li,
+.category-menu2 li{
+    font-size: 16px;
+    color: #333;
+    padding: 15px;
+    align-items: center;
+    
+}
+
+.category-menu li:hover,
+.category-menu2 li:hover{
+    background-color: #4ca8af;
+}

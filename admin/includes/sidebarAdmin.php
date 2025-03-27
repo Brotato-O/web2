@@ -7,7 +7,7 @@
         <p class="card-text">Cài đặt</p>
     </div>
 </div>
-<nav class="navbar bg-warning">
+<nav class="navbar --bs-danger-border-subtle">
     <div class="w-100">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
