@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     </head>
     <body>
-    <form>
         <h2 class="heading-cart">THÔNG TIN ĐẶT HÀNG</h2>
         <div class="container">
             <div class="queue-cart">
@@ -36,7 +35,6 @@
                 </div>
             </div>  
         </div>
-    </form>
     <script>
         
     </script>

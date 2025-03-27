@@ -1,4 +1,4 @@
-$(document).ready(function(){
+
 function update(){
     var checkbox= $("input:checkbox:checked");
     var sum=0;
@@ -9,8 +9,16 @@ function update(){
     console.log(sum);
     $(".total-items").html(sum);
 }
-$("input:checkbox").change(function(){
-    console.log("Đã thay đổi");
-    update();
+setTimeout(function(){
+    $("input:checkbox").change(update);
+}, 500);
+$(".next").click(function(){
+    console.log(parseInt($(".total-items").html()));
+    if (parseInt($(".total-items").html())==0){
+        alert("Chưa chọn sản phẩm nào");
+        return false;
+    }
+    else{
+        window.location.href = "cart.php";
+    }
 });
-})
