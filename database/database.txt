@@ -1,0 +1,175 @@
+create database QUANLYBANHANG;
+Use QUANLYBANHANG;
+CREATE TABLE `DANHMUC` (
+  `id_danhmuc` int PRIMARY KEY AUTO_INCREMENT,
+  `name_danhmuc` varchar(255),
+  `id_danhmuc_cha` int DEFAULT null,
+  `hot` boolean DEFAULT false
+);
+
+CREATE TABLE `PRODUCTS` (
+  `id_product` int PRIMARY KEY AUTO_INCREMENT,
+  `id_danhmuc` int,
+  `name_product` varchar(255),
+  `price` int,
+  `image` varchar(500),
+  `discount` int DEFAULT 0,
+  `hot` boolean DEFAULT false
+);
+
+CREATE TABLE `SIZE` (
+  `id_size` int PRIMARY KEY AUTO_INCREMENT,
+  `name_size` varchar(50)
+);
+
+CREATE TABLE `NHACUNGCAP` (
+  `id_nhacungcap` int PRIMARY KEY AUTO_INCREMENT,
+  `ten_ncc` varchar(255),
+  `diachi` varchar(500),
+  `phone` varchar(20),
+  `email` varchar(255),
+  `website` varchar(255),
+  `trangthai` boolean DEFAULT true
+);
+
+CREATE TABLE `PHIEUNHAP` (
+  `id_phieunhap` int PRIMARY KEY AUTO_INCREMENT,
+  `id_nhacungcap` int,
+  `id_nhanvien` int,
+  `ngaynhap` datetime,
+  `tongtien` int
+);
+
+CREATE TABLE `CHITIETPHIEUNHAP` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id_phieunhap` int,
+  `id_product` int,
+  `id_size` int,
+  `soluong` int,
+  `gianhap` int
+);
+
+CREATE TABLE `TONKHO` (
+  `id_tonkho` int PRIMARY KEY AUTO_INCREMENT,
+  `id_product` int,
+  `id_size` int,
+  `quantity` int DEFAULT 0
+);
+
+CREATE TABLE `BINHLUAN` (
+  `id_binhluan` int PRIMARY KEY AUTO_INCREMENT,
+  `id_khachhang` int,
+  `id_product` int,
+  `noidung` varchar(1000),
+  `sosao` int COMMENT 'Range 1-5',
+  `thoigian` datetime
+);
+
+CREATE TABLE `BANNER` (
+  `id_banner` int PRIMARY KEY AUTO_INCREMENT,
+  `image_banner` varchar(500),
+  `link` varchar(500),
+  `status` boolean DEFAULT true
+);
+
+CREATE TABLE `DONHANG` (
+  `id_donhang` int PRIMARY KEY AUTO_INCREMENT,
+  `id_khachhang` int,
+  `id_nhanvien` int DEFAULT null,
+  `price` int,
+  `giamgia` int DEFAULT 0,
+  `tongtien` int,
+  `phigiaohang` int DEFAULT 0,
+  `note` varchar(1000),
+  `hinhthucthanhtoan` varchar(255),
+  `status` enum('Chờ xác nhận','Đã xác nhận','Đã hủy') DEFAULT 'Chờ xác nhận',
+  `giaohang` enum('Chưa giao','Đang giao','Đã giao') DEFAULT 'Chưa giao',
+  `tinhtrangthanhtoan` enum('Chưa thanh toán','Đã thanh toán','Không thành công') DEFAULT 'Chưa thanh toán',
+  `ngaydathang` datetime
+);
+
+CREATE TABLE `CHITIETDONHANG` (
+  `id_chitiethoadon` int PRIMARY KEY AUTO_INCREMENT,
+  `id_donhang` int,
+  `id_tonkho` int,
+  `price` int,
+  `discount` int DEFAULT 0,
+  `quantity` int COMMENT 'Must be > 0',
+  `tongtien` int
+);
+
+CREATE TABLE `KHACHHANG` (
+  `id_khachhang` int PRIMARY KEY AUTO_INCREMENT,
+  `username` varchar(50) UNIQUE,
+  `fullname` varchar(255),
+  `phone` varchar(20) UNIQUE,
+  `email` varchar(255) UNIQUE,
+  `password` varchar(255),
+  `diachi` varchar(500),
+  `status` boolean DEFAULT true
+);
+
+CREATE TABLE `NHANVIEN` (
+  `id_nhanvien` int PRIMARY KEY AUTO_INCREMENT,
+  `username` varchar(50) UNIQUE,
+  `fullname` varchar(255),
+  `phone` varchar(20) UNIQUE,
+  `email` varchar(255) UNIQUE,
+  `password` varchar(255),
+  `chucvu` varchar(100)
+);
+
+ALTER TABLE `PRODUCTS` ADD FOREIGN KEY (`id_danhmuc`) REFERENCES `DANHMUC` (`id_danhmuc`);
+
+ALTER TABLE `TONKHO` ADD FOREIGN KEY (`id_product`) REFERENCES `PRODUCTS` (`id_product`);
+
+ALTER TABLE `TONKHO` ADD FOREIGN KEY (`id_size`) REFERENCES `SIZE` (`id_size`);
+
+ALTER TABLE `BINHLUAN` ADD FOREIGN KEY (`id_khachhang`) REFERENCES `KHACHHANG` (`id_khachhang`);
+
+ALTER TABLE `BINHLUAN` ADD FOREIGN KEY (`id_product`) REFERENCES `PRODUCTS` (`id_product`);
+
+ALTER TABLE `DONHANG` ADD FOREIGN KEY (`id_khachhang`) REFERENCES `KHACHHANG` (`id_khachhang`);
+
+ALTER TABLE `CHITIETDONHANG` ADD FOREIGN KEY (`id_donhang`) REFERENCES `DONHANG` (`id_donhang`);
+
+ALTER TABLE `CHITIETDONHANG` ADD FOREIGN KEY (`id_tonkho`) REFERENCES `TONKHO` (`id_tonkho`);
+
+ALTER TABLE `DONHANG` ADD FOREIGN KEY (`id_nhanvien`) REFERENCES `NHANVIEN` (`id_nhanvien`);
+
+ALTER TABLE `PHIEUNHAP` ADD FOREIGN KEY (`id_nhacungcap`) REFERENCES `NHACUNGCAP` (`id_nhacungcap`);
+
+ALTER TABLE `PHIEUNHAP` ADD FOREIGN KEY (`id_nhanvien`) REFERENCES `NHANVIEN` (`id_nhanvien`);
+
+ALTER TABLE `CHITIETPHIEUNHAP` ADD FOREIGN KEY (`id_phieunhap`) REFERENCES `PHIEUNHAP` (`id_phieunhap`);
+
+ALTER TABLE `CHITIETPHIEUNHAP` ADD FOREIGN KEY (`id_product`) REFERENCES `PRODUCTS` (`id_product`);
+
+ALTER TABLE `CHITIETPHIEUNHAP` ADD FOREIGN KEY (`id_size`) REFERENCES `SIZE` (`id_size`);
+
+ALTER TABLE `DANHMUC` ADD FOREIGN KEY (`id_danhmuc_cha`) REFERENCES `DANHMUC` (`id_danhmuc`);
+
+
+
+
+INSERT INTO `danhmuc` (`id_danhmuc`, `name_danhmuc`, `id_danhmuc_cha`, `hot`) VALUES ('1', 'Áo Nam', NULL, ''), ('2', 'Áo Polo', '1', '0');
+INSERT INTO `danhmuc` (`id_danhmuc`, `name_danhmuc`, `id_danhmuc_cha`, `hot`) VALUES ('3', 'Áo Thun', '1', '0'), ('4', 'Quần Nam', NULL, '0');
+INSERT INTO `danhmuc` (`id_danhmuc`, `name_danhmuc`, `id_danhmuc_cha`, `hot`) VALUES ('5', 'Áo Nữ', NULL, '0');
+INSERT INTO `products` (`id_product`, `id_danhmuc`, `name_product`, `price`, `image`, `discount`, `hot`) VALUES (NULL, '2', 'Áo Polo In Tràn', '450000', 'aonam_1.png', '0', '0'), (NULL, '2', 'Áo Polo nam phối màu hiện đại, trẻ trung, năng động.', '290000', 'aonam_2.png', '0', '0');
+INSERT INTO `products` (`id_product`, `id_danhmuc`, `name_product`, `price`, `image`, `discount`, `hot`) VALUES (NULL, '2', 'Áo Polo Nam Cafe Nẹp Giấu Cúc - Thoáng mát vải mịn', '290000', 'aonam_5.png', '0', '0'), (NULL, '3', 'T-shirt Nam Traffic Sport Siêu Nhẹ', '120000', 'aonam_3.png', '0', '0');
+INSERT INTO `products` (`id_product`, `id_danhmuc`, `name_product`, `price`, `image`, `discount`, `hot`) VALUES (NULL, '3', 'Áo Thun Thể Thao Nam Siêu Nhẹ Thấm hút tốt, khô nhanh, thông thoáng', '800000', 'aonam_4.png', '0', '0');
+INSERT INTO `products` (`id_product`, `id_danhmuc`, `name_product`, `price`, `image`, `discount`, `hot`) VALUES (NULL, '5', 'Áo Khoác Jeans Nữ Crop Cơ Bản', '500000', 'ao-nu-1.jpg', '0', '0'), (NULL, '5', 'Sơ Mi Dài Tay Nữ Nano Thêu Nẹp Thiết kế tôn dáng, tỉ mỉ trong từng đường may', '150000', 'ao-nu-2.jpg', '0', '0');
+INSERT INTO `products` (`id_product`, `id_danhmuc`, `name_product`, `price`, `image`, `discount`, `hot`) VALUES (NULL, '5', 'Áo Len Nữ Mỏng Cổ Cao 5cm - Chất vải mềm mại, an toàn cho da, độ co giãn đàn hồi', '375000', 'ao-nu-3.png', '0', '0'), (NULL, '5', 'Áo Sơ Mi Tay Dài Nữ Phối Tay Voan - Thanh lịch - Sang trọng - Mềm mại', '400000', 'ao-nu-4.png', '0', '0');
+INSERT INTO `products` (`id_product`, `id_danhmuc`, `name_product`, `price`, `image`, `discount`, `hot`) VALUES (NULL, '5', 'Áo Sơ Mi Tay Dài Nữ Phối Tay Voan - Thanh lịch - Sang trọng - Mềm mại', '500000', NULL, '0', '0');
+INSERT INTO `products` (`id_product`, `id_danhmuc`, `name_product`, `price`, `image`, `discount`, `hot`) VALUES (NULL, '4', 'QUẦN JEANS NAM REGULAR YODY DENIM - Chất liệu cotton USA cao cấp', '550000', 'quan_1.jpg', '0', '0'), (NULL, '4', 'Quần Kaki Nam Cạp Di Động - Cao cấp, thành phần cotton cao giúp quần thông thoáng', '250000', 'quan_2.png', '0', '0');
+INSERT INTO `products` (`id_product`, `id_danhmuc`, `name_product`, `price`, `image`, `discount`, `hot`) VALUES (NULL, '4', 'Quần Jeans Nam Slim Fit Rayon Rách Gối phong cách trẻ trung, cá tính', '150000', 'quan_3.jpg', '0', '0'), (NULL, NULL, 'Quần Âu Nam Cạp Di Động Kẻ Sọc - Thiết kế cạp di động co giãn nhẹ, thoải mái vận động', '450000', 'quan_5.png', '0', '0');
+CREATE TABLE `PHANQUYEN` ( `id_phanquyen` int PRIMARY KEY AUTO_INCREMENT, `name_phanquyen` varchar(255) );
+ALTER TABLE nhanvien add id_phanquyen int(11);
+ALTER TABLE `nhanvien` ADD FOREIGN KEY (`id_phanquyen`) REFERENCES `phanquyen` (`id_phanquyen`);
+INSERT INTO `phanquyen` (`id_phanquyen`, `name_phanquyen`) VALUES ('1', 'Quản lý'), ('2', 'Admin');
+INSERT INTO `phanquyen` (`id_phanquyen`, `name_phanquyen`) VALUES ('3', 'Nhân viên');
+INSERT INTO `nhanvien` (`id_nhanvien`, `username`, `fullname`, `phone`, `email`, `password`, `chucvu`, `id_phanquyen`) VALUES (NULL, 'nv01', 'Nguyễn Văn A', '0123456789', 'nv01@gmail.com', '123456789', 'Nhân Viên', '3'), (NULL, 'nv02', 'Nguyễn Văn B', '1234567890', 'nv02@gmail.com', '123456789', 'Nhân Viên', '3');
+INSERT INTO `nhanvien` (`id_nhanvien`, `username`, `fullname`, `phone`, `email`, `password`, `chucvu`, `id_phanquyen`) VALUES (NULL, 'ql01', 'Trần Hải C', '7894561230', 'ql01@gmail.com', '123456789', 'Quản lý', '1');
+INSERT INTO `nhanvien` (`id_nhanvien`, `username`, `fullname`, `phone`, `email`, `password`, `chucvu`, `id_phanquyen`) VALUES (NULL, 'admin01', 'Nguyễn Thị D', '4561237890', 'admin01@gmail.com', '123456789', 'Admin', '2');
+INSERT INTO `khachhang` (`id_khachhang`, `username`, `fullname`, `phone`, `email`, `password`, `diachi`, `status`) VALUES (NULL, 'kh01', 'Nguyễn Thị E', '0147852369', 'kh01@gmail.com', '123456789', NULL, '1');
+INSERT INTO `khachhang` (`id_khachhang`, `username`, `fullname`, `phone`, `email`, `password`, `diachi`, `status`) VALUES (NULL, 'kh02', 'Nguyễn F', '4561230789', 'kh02@gma
