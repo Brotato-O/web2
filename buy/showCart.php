@@ -12,6 +12,7 @@
     $img = array();
     $result= mysqli_query($conn, $query);
     while($row= mysqli_fetch_array($result)){
+        $id[] = $row["id"];
         $name[] = $row["name"];
         $price[] = $row["price"];
         $quantity[] = $row["quantity"];
@@ -20,6 +21,7 @@
         $img[] = $row["img"];
     }
     echo json_encode([
+        "id" => $id,
         "name" => $name,
         "price" => $price,
         "quantity" => $quantity,
