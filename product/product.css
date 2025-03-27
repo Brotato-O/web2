@@ -84,6 +84,7 @@
     gap: 15px;
 }
 
+
 .filter-btn {
     display: flex;
     align-items: center;
@@ -157,4 +158,29 @@
     font-weight: bold;
     font-size: 18px;
     margin-right:auto ;    
-}  
+}
+.filter-container {
+  display: none;
+    position: fixed;
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px 0 0 10px;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    right: 0px;  /* Ban đầu ẩn bên phải */
+    height: 100vh;
+    transition: right 0.3s ease-in-out;
+  }
+  
+  /* Nút đóng */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+  }

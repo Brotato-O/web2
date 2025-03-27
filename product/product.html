@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sản Phẩm Nổi Bật</title>
     <link rel="stylesheet" href="product.css">
+    <script src="product.js"></script>
 </head>
 <body>
     <div class="page-product">
@@ -98,7 +99,7 @@
                 
                 <h2 class="title">SẢN PHẨM</h2>
                 <div class="filter-section">
-                    <button class="filter-btn">
+                    <button class="filter-btn" onclick="filter()">
                         <i class="fa-solid fa-filter"></i> Bộ Lọc
                         
                     </button>
@@ -113,6 +114,8 @@
     
                 </div>
             </div>
+            
+        
             <div class="product-list-2">
                 <div class="product2">
                     <img src="" alt="">
@@ -207,5 +210,36 @@
 
         </div>
     </div>
+    <div id="filter" class="filter-container" >
+        <div class="filter-header">
+            <h2>Bộ Lọc</h2>
+            <button class="close-btn"  onclick="closeFilter()">✖</button>
+        </div>
+
+        <!-- Lọc theo màu sắc -->
+        <div class="filter-section1">
+            <h3>Màu sắc</h3>
+            <label><input type="checkbox" class="color-filter" value="xanh"> Xanh</label>
+            <label><input type="checkbox" class="color-filter" value="do"> Đỏ</label>
+        </div>
+
+        <!-- Lọc theo giá -->
+        <div class="filter-section1">
+            <h3>Lọc Theo Giá:</h3>
+            <input type="range" min="0" max="20000000" value="20000000" class="price-slider">
+            <p> <span id="price-value">20.000.000</span> VND</p>
+        </div>
+
+        <!-- Lọc theo đánh giá -->
+        <div class="filter-section1">
+            <h3>Lọc theo đánh giá</h3>
+            <label><input type="checkbox" class="rating-filter" value="5"> ⭐⭐⭐⭐⭐ (5)</label><br>
+            <label><input type="checkbox" class="rating-filter" value="4"> ⭐⭐⭐⭐☆ (4)</label><br>
+            <label><input type="checkbox" class="rating-filter" value="3"> ⭐⭐⭐☆☆ (3)</label><br>
+            <label><input type="checkbox" class="rating-filter" value="4"> ⭐⭐☆☆☆ (2)</label><br>
+            <label><input type="checkbox" class="rating-filter" value="3"> ⭐☆☆☆☆ (1)</label>
+        </div>
+    </div>
 </body>
+
 </html>
