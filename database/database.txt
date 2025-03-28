@@ -172,4 +172,4 @@ INSERT INTO `nhanvien` (`id_nhanvien`, `username`, `fullname`, `phone`, `email`,
 INSERT INTO `nhanvien` (`id_nhanvien`, `username`, `fullname`, `phone`, `email`, `password`, `chucvu`, `id_phanquyen`) VALUES (NULL, 'ql01', 'Trần Hải C', '7894561230', 'ql01@gmail.com', '123456789', 'Quản lý', '1');
 INSERT INTO `nhanvien` (`id_nhanvien`, `username`, `fullname`, `phone`, `email`, `password`, `chucvu`, `id_phanquyen`) VALUES (NULL, 'admin01', 'Nguyễn Thị D', '4561237890', 'admin01@gmail.com', '123456789', 'Admin', '2');
 INSERT INTO `khachhang` (`id_khachhang`, `username`, `fullname`, `phone`, `email`, `password`, `diachi`, `status`) VALUES (NULL, 'kh01', 'Nguyễn Thị E', '0147852369', 'kh01@gmail.com', '123456789', NULL, '1');
-INSERT INTO `khachhang` (`id_khachhang`, `username`, `fullname`, `phone`, `email`, `password`, `diachi`, `status`) VALUES (NULL, 'kh02', 'Nguyễn F', '4561230789', 'kh02@gma
+INSERT INTO `khachhang` (`id_khachhang`, `username`, `fullname`, `phone`, `email`, `password`, `diachi`, `status`) VALUES (NULL, 'kh02', 'Nguyễn F', '4561230789', 'kh02@gma','123456789','NULL','1');
