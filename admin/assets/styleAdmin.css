@@ -3,7 +3,7 @@
 }
 
 .nav-item:hover > a {
-  background-color: darkorange;
+  background-color: rgb(211, 196, 178);
 }
 
 #header_right .nav-link:hover {

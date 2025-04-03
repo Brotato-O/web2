@@ -1,3 +1,4 @@
+<?php include_once __DIR__ . '/includes/authLogin.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,16 +14,15 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-2 --bs-danger-border-subtle min-vh-100 flex-column" id="sidebar">
-                <?php include "includes/sidebarAdmin.php"; ?>
+            <div class="col-2 bg-warning min-vh-100 flex-column" id="sidebar">
+                <?php include __DIR__ . "/includes/sidebarAdmin.php"; ?>
             </div>
             <div class="col-10 bg-danger">
-                <?php include "includes/headerAdmin.php"; ?>
-                <div id="header-bottom"></div>
+                <?php include __DIR__ . "/includes/headerAdmin.php"; ?>
                 <div id="middle-content" class="container">
-                    <?php include "pages/dashboard.php" ?>
+                    <?php include __DIR__ . "/pages/dashboard.php"; ?>
                 </div>
-                <?php include "includes/footerAdmin.php" ?>
+                <?php include __DIR__ . "/includes/footerAdmin.php"; ?>
 
             </div>
         </div>
