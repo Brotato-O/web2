@@ -16,6 +16,6 @@
     <?php include './product/product.php'?>
     <?php include './footer/footer.php'; ?>
     <?php include 'backToTop.php'; ?>
-<script src="./index/script.js"></script>
+<script src="./product/product.js"></script>
 </body>
 </html>
