@@ -25,10 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
         this.classList.add("was-validated");
         return;
       }
-
       const formData = new FormData(this);
       fetch("loginAdmin_process.php", {
-        method: "POSTT",
+        method: "POST",
         body: formData, //Mong đợi phản hồi từ server là Form
       })
         .then((response) => response.json())
@@ -46,6 +45,32 @@ document.addEventListener("DOMContentLoaded", function () {
           const errorDiv = document.getElementById("errorMessage");
           errorDiv.textContent = "Có lỗi xảy ra, vui lòng thử lại sau";
           errorDiv.style.display = "block";
+        });
+    });
+  }
+});
+// Xử lý đăng xuất bằng AJAX
+document.addEventListener("DOMContentLoaded", function () {
+  const logoutBtn = document.querySelector("#logoutAdmin");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      fetch("pages/logoutAdmin.php", {
+        method: "POST",
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            window.location.href = "pages/loginAdmin.php";
+          } else {
+            alert("Đăng xuất thất bại! Vui lòng thử lại.");
+          }
+        })
+        .catch((error) => {
+          console.error("Lỗi:", error);
+          alert("Có lỗi xảy ra, vui lòng thử lại sau!");
         });
     });
   }

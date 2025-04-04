@@ -30,11 +30,12 @@
           <li class="nav-item ps-4">
             <a class="nav-link" href="#">
               <i class="fa-solid fa-right-from-bracket" style="color: #63e6be"></i>
-              <span>Log out</span>
+              <span id="logoutAdmin">Log out</span>
             </a>
           </li>
         </ul>
       </div>
     </nav>
   </div>
+  <script src="../assets/jsAdminLogin.js"></script> <!-- Đảm bảo file được import -->
 </div>
