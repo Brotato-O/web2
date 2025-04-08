@@ -186,3 +186,16 @@
     font-size: 20px;
     cursor: pointer;
   }
+  .list-page ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .list-page li{
+    float: left;
+    padding: 5px;
+    margin: 5px;
+    background-color: aqua;
+    
+  }

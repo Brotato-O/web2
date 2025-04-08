@@ -1,12 +1,6 @@
 
 <?php
-                    include "conect.php";
-                    $sql = "SELECT * FROM products";
-                    $result = mysqli_query($conn, $sql); 
-                    $products = [];
-                    while ($row = mysqli_fetch_array($result)) {
-                     $products[] = $row; // Lưu toàn bộ dữ liệu vào mảng
-}
+include "conect.php";
 ?>
 <!DOCTYPE html>
 <html lang="vi">
@@ -22,7 +16,9 @@
         <div class="product-list-1">
             <h2>SẢN PHẨM NỔI BẬT</h2>
             <?php
-                     foreach ($products as $row) { // Mở vòng lặp while
+                    $sql1 = "SELECT * FROM products ";
+                    $result1 = mysqli_query($conn, $sql1);
+                    while ($row = mysqli_fetch_array($result1)) {
                         if($row["hot"]==1) {
                 ?>
 
@@ -47,33 +43,37 @@
                         
                     </button>
                     <span class="display-text">Hiển thị</span>
-                    <select class="product-select">
-                        <option>a0 sản phẩm</option>
-                        <option>40 sản phẩm</option>
-                        <option>60 sản phẩm</option>
-                        <option>80 sản phẩm</option>
-                        <option>100 sản phẩm</option>
+                    <select class="product-select" id="product-limit">
+                        <option value="1">1 sản phẩm</option>
+                        <option value="4" selected>4 sản phẩm</option>
+                        <option value="8">8 sản phẩm</option>
+                        <option value="12">12 sản phẩm</option>
                     </select>
+
     
                 </div>
             </div>
             
         
-            <div class="product-list-2">
-                <?php
-                    foreach ($products as $row) { // Mở vòng lặp while
-                ?>
-                <div class="product2">
-                    <img src="../img/<?php echo $row['image']; ?>" alt="">
-                    <div class="name_product">
-                    <?php echo $row['name_product']; ?>
-                    </div>
-                    <div class="price_product">
-                    <?php echo $row['price']; ?>
-                    </div>
-                </div>
-                <?php } ?> 
+            <div class="product-list-2" id="product-container">
+    
             </div>
+
+            <div class="list-page" id="pagination">
+                <ul>
+                    <?php
+                    $sql_trang = mysqli_query($conn,"SELECT * FROM products");
+                    $row_conut = mysqli_num_rows($sql_trang);
+                    $trang = ceil($row_conut / 4);
+                    for($i = 1; $i <= $trang; $i++) {
+                        echo '<li><a href="#" class="page-link" data-page="'.$i.'">'.$i.'</a></li>';
+                    }
+                    ?>
+                </ul>
+            </div>
+
+
+        
 
         </div>
     </div>
