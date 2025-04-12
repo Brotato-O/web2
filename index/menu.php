@@ -1,7 +1,7 @@
 <?php include __DIR__ . '/../product/conect.php'; ?>
 <section id="menu">
     <ul class="menu-bar">
-        <li><i class="fa-solid fa-bars"></i> <a href="#" class="category-link" data-id="all"><p>DANH MỤC SẢN PHẨM</p>
+        <li><i class="fa-solid fa-bars"></i><a href="product.php" class="category-link"><p>DANH MỤC SẢN PHẨM</p></a>
             <ul class="category-menu">
               
                     <?php
@@ -10,9 +10,9 @@
 
                     while ($row = mysqli_fetch_assoc($result_danhmuc)) {
                     ?>
-                        <li>
-                            <a href="#" class="category-link" data-id="<?php echo $row['id_danhmuc']; ?>">
-                                <?php echo htmlspecialchars($row['name_danhmuc']); ?>
+                          <li>
+                        <a href="product.php?id=<?php echo $row['id_danhmuc']; ?>" class="category-link">
+                            <?php echo htmlspecialchars($row['name_danhmuc']); ?>
                             </a>
                         </li>
                     <?php

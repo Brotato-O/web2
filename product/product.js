@@ -1,76 +1,74 @@
-function filter() {
-    document.getElementById("filter").style.display = "block";
-}
-
-function closeFilter() {
-    document.getElementById("filter").style.display = "none";
-}
-
-
 document.addEventListener("DOMContentLoaded", function () {
-    let currentCategoryId = null;  // Biến lưu ID của danh mục hiện tại
-    let currentPage = 1;           // Biến lưu trang hiện tại
-    let currentLimit = 4;          // Biến lưu số lượng sản phẩm trên mỗi trang
+    // Helper: Lấy tham số từ URL
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
 
-    const productList = document.querySelector(".product-list-2"); // Phần hiển thị sản phẩm
-    const paginationContainer = document.querySelector(".list-page ul"); // Phần hiển thị phân trang
-    const limitSelect = document.getElementById("product-limit"); // Select box để thay đổi số lượng sản phẩm mỗi trang
+    let currentCategoryId = getQueryParam("id"); // id có thể null
+    let currentPage = parseInt(getQueryParam("page")) || 1;
+    let currentLimit = parseInt(getQueryParam("limit")) || 4;
 
-    // Gắn sự kiện cho các link danh mục
-    document.querySelectorAll(".category-link").forEach(link => {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();  // Ngừng hành động mặc định (chuyển trang)
+    const productList = document.querySelector(".product-list-2");
+    const paginationContainer = document.querySelector(".list-page ul");
+    const limitSelect = document.getElementById("product-limit");
 
-            currentCategoryId = this.dataset.id === "all" ? null : this.dataset.id;  // Kiểm tra nếu "Hiển thị tất cả sản phẩm"
-            currentPage = 1;  // Reset về trang 1
-            loadPage(currentPage, currentLimit);  // Tải lại sản phẩm
+    if (limitSelect) {
+        limitSelect.value = currentLimit;
+    }
 
-            // Cập nhật URL với tham số id (hoặc null nếu là tất cả sản phẩm)
-            const newUrl = `product.php?page=${currentPage}&limit=${currentLimit}${currentCategoryId ? '&id=' + currentCategoryId : ''}`;
-            history.pushState(null, "", newUrl);  // Cập nhật URL mà không reload trang
-        });
-    });
-
-    // Hàm tải dữ liệu sản phẩm
+    // Hàm tải sản phẩm bằng AJAX
     function loadPage(page, limit) {
         let url = `product/fetch_products.php?page=${page}&limit=${limit}`;
         if (currentCategoryId) {
-            url += `&id=${currentCategoryId}`;  // Thêm id danh mục nếu có
+            url += `&id=${currentCategoryId}`;
         }
 
         fetch(url)
             .then(res => res.text())
             .then(html => {
-                productList.innerHTML = html; // Cập nhật danh sách sản phẩm
+                productList.innerHTML = html;
 
-                // Fetch tổng số trang
+                // Lấy tổng số trang và tạo phân trang
                 fetch(`product/fetch_total_pages.php?limit=${limit}${currentCategoryId ? '&id=' + currentCategoryId : ''}`)
                     .then(res => res.json())
                     .then(data => {
                         paginationContainer.innerHTML = "";
                         for (let i = 1; i <= data.totalPages; i++) {
-                            paginationContainer.innerHTML += `<li><a href="#" class="page-link" data-page="${i}">${i}</a></li>`;
+                            const activeClass = (i === page) ? 'active' : '';
+                            paginationContainer.innerHTML += `
+                                <li><a href="#" class="page-link ${activeClass}" data-page="${i}">${i}</a></li>
+                            `;
                         }
                     });
             });
     }
 
-    // Khi thay đổi số lượng sản phẩm mỗi trang
-    limitSelect.addEventListener("change", function () {
-        currentLimit = parseInt(this.value);
-        currentPage = 1;  // Reset về trang đầu
-        loadPage(currentPage, currentLimit);  // Tải lại trang với số sản phẩm mới
-    });
+    // Thay đổi limit => AJAX + update URL
+    if (limitSelect) {
+        limitSelect.addEventListener("change", function () {
+            currentLimit = parseInt(this.value);
+            currentPage = 1;
+            loadPage(currentPage, currentLimit);
+            const newUrl = `product.php?page=1&limit=${currentLimit}${currentCategoryId ? '&id=' + currentCategoryId : ''}`;
+            history.pushState(null, "", newUrl);
+        });
+    }
 
-    // Click phân trang
+    // Phân trang => AJAX + update URL
     paginationContainer.addEventListener("click", function (e) {
         if (e.target.classList.contains("page-link")) {
             e.preventDefault();
-            currentPage = parseInt(e.target.dataset.page);
-            loadPage(currentPage, currentLimit);
+            const selectedPage = parseInt(e.target.dataset.page);
+            if (selectedPage !== currentPage) {
+                currentPage = selectedPage;
+                loadPage(currentPage, currentLimit);
+                const newUrl = `product.php?page=${currentPage}&limit=${currentLimit}${currentCategoryId ? '&id=' + currentCategoryId : ''}`;
+                history.pushState(null, "", newUrl);
+            }
         }
     });
 
-    // Khởi tạo tải trang đầu tiên
+    // Load dữ liệu lần đầu
     loadPage(currentPage, currentLimit);
 });
