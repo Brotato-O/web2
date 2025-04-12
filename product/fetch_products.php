@@ -5,7 +5,13 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 4;
 $begin = ($page - 1) * $limit;
 
-$sql = "SELECT * FROM products LIMIT $begin, $limit";
+if (isset($_GET['id'])) {
+    $id_danhmuc = $_GET['id'];  // Lấy ID danh mục từ tham số GET
+    $sql = "SELECT * FROM products WHERE id_danhmuc = $id_danhmuc LIMIT $begin, $limit";  // Lọc sản phẩm theo danh mục
+} else {
+    $sql = "SELECT * FROM products LIMIT $begin, $limit";  // Hiển thị tất cả sản phẩm nếu không có ID danh mục
+}
+
 $result = mysqli_query($conn, $sql);
 
 while ($row = mysqli_fetch_array($result)) {
@@ -17,5 +23,4 @@ while ($row = mysqli_fetch_array($result)) {
     </div>
     <?php
 }
-
 ?>

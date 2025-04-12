@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./product/product.css">
     <link rel="stylesheet" href="./footer/footer.css">
     <link rel="stylesheet" href="./header/header.css">
+    <script src="./product/product.js"></script>
 </head>
 <body>
     <?php include './header/header.php'; ?>
@@ -16,6 +17,5 @@
     <?php include './product/product.php'?>
     <?php include './footer/footer.php'; ?>
     <?php include 'backToTop.php'; ?>
-<script src="./product/product.js"></script>
 </body>
 </html>
