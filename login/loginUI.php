@@ -3,14 +3,14 @@
         <div class="left" id="left">
             <h1>ĐĂNG NHẬP</h1>
             <div class="input-login">
-                <input class="input" required type="text" id="username">
+                <input class="input" required type="text" id="login-username">
                 <label class="label" for="username">Tên đăng nhập</label>
             </div>
             <div class="input-login">
-                <input class="input" required type="password" id="password">
+                <input class="input" required type="password" id="login-password">
                 <label class="label" for="password">Mật khẩu</label>
             </div>
-            <button class="btn-login">Đăng nhập</button>
+            <button id="login-submit" class="btn-login">Đăng nhập</button>
             <div class="more">
             <p>Chưa có tài khoản?</p>
             <a id="register-link">Đăng ký</a>
@@ -38,20 +38,20 @@
             </div>
             <div>
             <div class="input-login">
-                <input class="input" required type="text" id="username2">
-                <label class="label" for="username2">Tên đăng nhập</label>
+                <input class="input" required type="text" id="register-username">
+                <label class="label" for="register-username">Tên đăng nhập</label>
             </div>
             <div class="input-login">
-                <input class="input" required type="password" id="password2">
-                <label class="label" for="password2">Mật khẩu</label>
+                <input class="input" required type="password" id="register-password">
+                <label class="label" for="register-password">Mật khẩu</label>
             </div>
             <div class="input-login">
-                <input class="input" required type="password" id="repassword2">
-                <label class="label" for="repassword2">Nhập lại mật khẩu</label>
+                <input class="input" required type="password" id="register-confirm-password">
+                <label class="label" for="register-confirm-password">Nhập lại mật khẩu</label>
             </div>
             </div>
             </div>
-            <button class="btn-login">Đăng kí</button>
+            <button id="register-submit" class="btn-login">Đăng kí</button>
             <div class="more">
             <p>Đã có tài khoản?</p>
             <a id="login-link">Đăng nhập</a>
