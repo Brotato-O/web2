@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./index/style.css">
     <link rel="stylesheet" href="./footer/footer.css">
     <link rel="stylesheet" href="./header/header.css">
+    <script src="./product/product.js"></script>
 </head>
 <body>
     <?php include './header/header.php'; ?>

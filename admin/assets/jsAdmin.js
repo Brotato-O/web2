@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       const url = this.getAttribute("href");
       fetch(url)
-        .then((response) => response.text())
+        .then((response) => response.text()) //Mong đợi phản hồi từ server là HTML
         .then((data) => {
           document.getElementById("middle-content").innerHTML = data;
           // Gán lại sự kiện load và click của chart
