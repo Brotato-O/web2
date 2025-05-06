@@ -16,19 +16,10 @@
     </div>
 
     <div class="product-list-2" id="product-container">
-        <!-- Danh sách sản phẩm (JS có thể đổ vào đây) -->
+        <!-- Danh sách sản phẩm sẽ được JS đổ vào đây -->
     </div>
 
     <div class="list-page" id="pagination">
-        <ul>
-            <?php
-            $sql_trang = mysqli_query($conn, "SELECT * FROM products");
-            $row_conut = mysqli_num_rows($sql_trang);
-            $trang = ceil($row_conut / 4);
-            for ($i = 1; $i <= $trang; $i++) {
-                echo '<li><a href="#" class="page-link" data-page="'.$i.'">'.$i.'</a></li>';
-            }
-            ?>
-        </ul>
+        <ul></ul> <!-- JavaScript sẽ render phân trang tại đây -->
     </div>
 </div>

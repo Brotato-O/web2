@@ -2,12 +2,18 @@
 include "conect.php";
 
 $limit = isset($_GET['limit']) ? intval($_GET['limit']) : 4;
+$search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+$categoryId = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
-if (isset($_GET['id'])) {
-    $id = intval($_GET['id']);  // Lấy ID danh mục từ tham số GET
-    $sql = "SELECT COUNT(*) as total FROM products WHERE id_danhmuc = $id";  // Đếm sản phẩm theo danh mục
-} else {
-    $sql = "SELECT COUNT(*) as total FROM products";  // Đếm tất cả sản phẩm nếu không có ID danh mục
+$sql = "SELECT COUNT(*) as total FROM products WHERE 1";
+
+if ($categoryId > 0) {
+    $sql .= " AND id_danhmuc = $categoryId";
+}
+
+if (!empty($search)) {
+    $sql .= " AND name_product LIKE '%$search%'";
+
 }
 
 $result = mysqli_query($conn, $sql);

@@ -4,8 +4,8 @@
             <p>LOGO</p>
         </div>
         <div id="searchBar">
-            <input type="text" placeholder="Tìm kiếm...">
-            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        <input type="text" placeholder="Tìm kiếm..." id="searchInput">
+        <button id="searchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         <div id="CartnSign">
             <div class="cart">
