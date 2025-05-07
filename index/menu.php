@@ -20,13 +20,23 @@
                     ?>
             </ul>
         </li>
-            <li><a>Trang chủ</a></li>
-            <li>Sản phẩm
+            <li><a href = "index.php">Trang chủ</a></li>
+            <li><a href="product.php" class="category-link"><p>Sản phẩm</p></a>
                 <ul class="category-menu2">
-                    <li>Áo</li>
-                    <li>Quần</li>
-                    <li>Giày</li>
-                    <li>Phụ kiện</li>
+                <?php
+                    $sql_danhmuc = "SELECT * FROM DANHMUC";
+                    $result_danhmuc = mysqli_query($conn, $sql_danhmuc);
+
+                    while ($row = mysqli_fetch_assoc($result_danhmuc)) {
+                    ?>
+                          <li>
+                        <a href="product.php?id=<?php echo $row['id_danhmuc']; ?>" class="category-link">
+                            <?php echo htmlspecialchars($row['name_danhmuc']); ?>
+                            </a>
+                        </li>
+                    <?php
+                    }
+                    ?>
                 </ul>
             </li>
             <li><a>Flash sale</a></li>
